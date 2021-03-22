@@ -1,0 +1,152 @@
+{% extends "page.njk" %}
+
+{% block unfurl %}
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="{{serverRoot}}/{{filePath}}" />
+    <meta property="og:title" content="{{template.getIdentifier()}}" />
+    <meta property="og:description" content="{{template.getMetadata().getDescription()}}" />
+    <meta property="og:image" content="{{umlCardURL}}" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="{{template.getIdentifier()}}" />
+    <meta name="twitter:description" content="{{template.getMetadata().getDescription()}}" />
+    <meta name="twitter:image" content="{{umlCardURL}}" />
+    <meta name="twitter:image:alt" content="UML diagram of {{template.getIdentifier()}} namespace." />
+    <meta name="twitter:url" content="{{serverRoot}}/{{filePath}}" />
+{% endblock %}
+
+{% block body %}
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                {{template.getMetadata().getDisplayName()}}
+            </h1>
+            {% if author or logo %}
+                <h4 class="title is-4 author-section">
+                    Author: {% if logo %} <img height="24" width="24" src="data:image/png;base64, {{logo}}"/> {% endif %} {% if author %} <span class="author"> {{author}} </span> {% endif %}
+                </h4>
+            {% endif %}
+            <div class="tags">
+                <span class="tag is-light">{{template.getIdentifier()}}</span>
+                <span class="tag is-light">{% if template.getMetadata().getTemplateType() === 0 %}Contract{% else %}Clause{% endif %}</span>
+                <span class="tag is-light">{{template.getMetadata().getCiceroVersion()}}</span>
+                <span class="tag is-light">{{template.getHash()}}</span>
+            </div>
+            <p class="subtitle">
+                {{template.getMetadata().getDescription()}}
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              {% for name in templateVersions |sort(true)%}
+                <a href="{{name}}.html" class="dropdown-item {{"is-active" if name === template.getIdentifier()}}">
+                    {{name}}
+                </a>
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+          <a href="./archives/{{template.getIdentifier()}}.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/{{template.getIdentifier()}}-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="{{studioURL}}" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+        </p>
+
+        <div class="content">
+          <p>
+          {{readmeHtml}}
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="{{html_style}}">{{sampleHTML}}</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="{{pre_style}}"><code class="markdown">{{sample}}</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="{{pre_style}}"><code class="tem">{{template.getParserManager().getTemplate()}}</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="{{pre_style}}"><code style="{{code_style}}">{{instance}}</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="{{umlURL}}"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="{{pre_style}}"><code class="ergo">{{modelFile}}</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                {% if template.getTemplateModel().getModelFile().getExternalImports().length !== 0 %}
+                    {% for ns, uri in template.getTemplateModel().getModelFile().getExternalImports() %}
+                        <li><a href="{{uri | replace(".cto", ".html")}}">{{ns}}</a></li>
+                    {% endfor %}
+                {% else %}
+                    <li>None</li>
+                {% endif %}
+            </ul>
+        </div>
+
+        {% include "developers.njk" %}
+      </div>
+    </section>
+{% endblock %}
