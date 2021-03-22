@@ -1,6 +1,6 @@
-{%set pre_style="white-space: pre-wrap; border: 0; background-color: transparent;"%}
-{%set html_style="white-space: pre-wrap; border: 0; background-color: transparent;"%}
-{%set code_style="white-space: pre-wrap;"%}
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -30,9 +30,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {%set accord_logo="accord_logo_large.png"%}
-        {%set title="UK Legal Schema Template Library"%}
-        {%set description="Library hosting all UK Legal Schema templates."%}
+        
+        
+        
 
         <!-— generic unfurl tags -->
         <meta property="og:type" content="website" />
@@ -43,21 +43,21 @@
         <meta name="twitter:label2" content="Contribute" />
         <meta name="twitter:data2" content="at LegalSchema.org" />
 
-        {% block unfurl %}
+        
             <!-— facebook open graph tags -->
             <meta property="og:url" content="https://templates.legalschema.org" />
-            <meta property="og:title" content="{{title}}" />
-            <meta property="og:description" content="{{description}}" />
-            <meta property="og:image" content="{{serverRoot}}/{{accord_logo}}" />
+            <meta property="og:title" content="UK Legal Schema Template Library" />
+            <meta property="og:description" content="Library hosting all UK Legal Schema templates." />
+            <meta property="og:image" content="https://templates.legalschema.org/accord_logo_large.png" />
             
             <!-— twitter card tags additive with the og: tags -->
-            <meta name="twitter:title" content="{{title}}" />
+            <meta name="twitter:title" content="UK Legal Schema Template Library" />
             <meta name="twitter:site" content="@LegalSchema" />
-            <meta name="twitter:description" content="{{description}}" />
-            <meta name="twitter:image" content="{{serverRoot}}/{{accord_logo}}" />
+            <meta name="twitter:description" content="Library hosting all UK Legal Schema templates." />
+            <meta name="twitter:image" content="https://templates.legalschema.org/accord_logo_large.png" />
             <meta name="twitter:image:alt" content="UK Legal Schema logo" />
-            <meta name="twitter:url" content="{{serverRoot}}" />
-        {% endblock %}
+            <meta name="twitter:url" content="https://templates.legalschema.org" />
+        
 
         <title>UK Legal Schema Template Library</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
@@ -90,7 +90,7 @@
              });
          });
         </script>
-      <script>{% raw %}
+      <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
            var ERGO_KEYWORDS = {
@@ -179,7 +179,7 @@
                ]
            };
        });
-       {% endraw %}</script>
+       </script>
   </head>
 
   <body>
@@ -203,7 +203,63 @@
       </div>
     </nav>
 
-    {% block body %} {% endblock %}
+    
+    <section class="hero is-dark">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-1">
+            UK Legal Schema <span class="has-light">Template Library</span>
+          </h1>
+          <h2 class="subtitle">
+            This library contains all UK Legal Schema contract and clause templates. Templates are captured using the UK Legal Schema markup format. To contribute new templates (or fix existing templates), you can fork this <a href="https://github.com/accordproject/cicero-template-library" target="_blank">GitHub</a> repository and submit pull requests to the maintainers.
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="title is-2">Templates</h2>
+            <table class="table box versions">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Cicero Version</th>
+                <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                <th>
+                  <a href="bill-of-lading@0.0.2.html">
+                    
+                      Bill of Lading
+                    
+                  <a>
+                </th>
+                <td>Bill of Lading for transport of goods via ocean vessel</td>
+                <td>^0.21.0</td>
+                <td>Clause</td>
+                
+            </tbody>            
+            <tfoot>
+                <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Cicero Version</th>
+                <th>Type</th>
+                </tr>
+            </tfoot>
+            </table>
+            <div class="content">
+                <a href="template-library.json" target="_blank">Template Library Index</a>
+            </div>
+        </div>
+    </section>
+
+
 
     <footer class="footer has-background-dark">
         <div class="container">

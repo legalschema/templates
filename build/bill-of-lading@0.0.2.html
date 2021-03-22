@@ -1,0 +1,713 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.legalschema.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at LegalSchema.org" />
+
+        
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://templates.legalschema.org/bill-of-lading@0.0.2.html" />
+    <meta property="og:title" content="bill-of-lading@0.0.2" />
+    <meta property="og:description" content="Bill of Lading for transport of goods via ocean vessel" />
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/bLLXRvim4FsUNy77JLkZfbkRJQgg4i9Q58eHa7RHD4MkEGWhsCoORkcs_pwJs3IkCYdxbFVktJtikmjSDW9pqLRbW9IuQIp6ys49EIuRie8A3--BicHPYTE2viCGamUSGxAkmJe_jrwvRtCEwzVMnONrQs1PrXjhObzfuBiQHP7hQnpFt4JZ976ZnT91KOHYxzPTtlMI5oY0FYim3vph7awrjsFBL5tbs846qGGjUXnvRjIJ1FL9SMyIpnH2GM9BGvqUsOdEMVXUCDN2D9hVR96FaBP1oRNMGzkPsLUk9fwlaU_hmuQUwxYnng6xbFwg89BL2hcwSH7o5OfdtbIX424LJEn0bIJpYRAP1vvwrgqTBCFUz2womz2T3luSCl5F78fy9PnDvlwHExuTnylJOuETxh8pGpipjB6XZSU6-C5W7qyCEZesIaSZaxv8DiytCfzpObgTcCdlJFMzIKybFQYLr_W9yvIr_-hZGgz3W0upT5XLiRGGQ-tWKG4vSEjxYwcGSRK7j10ek-disXwgnTlvFzVFMAsNuF8fLWeDuKKj2aQDEAqouh1K9HjxaksGhVnyznL-gh0ux88JIL3cRuWqQvljMyVkMWTqjtVgJ9WGrb8HuCgyGqCmCGBth0pQwXxuYoXxaBzx5FXPCouYo8039T0O8gC_vEKysWZUagvFIaOynxHumbt8QbP5NMjNGo6oeCWfm1wDCb5awr2-eTV68n-XQQ0qGsmjnxVdxDt9PHVPferxb6aXUuzvRhQiBZ41b4L0G0v_dpI5idW4hWxMB-ENh_96MrpeHjqm2l8pixQhRZnofUJmEQItk6n1hiB_Bi7HqU-BpUPqy-PfpTat86982WAS3MK_1SUIsnjrMpEu19fsNxc_" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="bill-of-lading@0.0.2" />
+    <meta name="twitter:description" content="Bill of Lading for transport of goods via ocean vessel" />
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/bLLXRvim4FsUNy77JLkZfbkRJQgg4i9Q58eHa7RHD4MkEGWhsCoORkcs_pwJs3IkCYdxbFVktJtikmjSDW9pqLRbW9IuQIp6ys49EIuRie8A3--BicHPYTE2viCGamUSGxAkmJe_jrwvRtCEwzVMnONrQs1PrXjhObzfuBiQHP7hQnpFt4JZ976ZnT91KOHYxzPTtlMI5oY0FYim3vph7awrjsFBL5tbs846qGGjUXnvRjIJ1FL9SMyIpnH2GM9BGvqUsOdEMVXUCDN2D9hVR96FaBP1oRNMGzkPsLUk9fwlaU_hmuQUwxYnng6xbFwg89BL2hcwSH7o5OfdtbIX424LJEn0bIJpYRAP1vvwrgqTBCFUz2womz2T3luSCl5F78fy9PnDvlwHExuTnylJOuETxh8pGpipjB6XZSU6-C5W7qyCEZesIaSZaxv8DiytCfzpObgTcCdlJFMzIKybFQYLr_W9yvIr_-hZGgz3W0upT5XLiRGGQ-tWKG4vSEjxYwcGSRK7j10ek-disXwgnTlvFzVFMAsNuF8fLWeDuKKj2aQDEAqouh1K9HjxaksGhVnyznL-gh0ux88JIL3cRuWqQvljMyVkMWTqjtVgJ9WGrb8HuCgyGqCmCGBth0pQwXxuYoXxaBzx5FXPCouYo8039T0O8gC_vEKysWZUagvFIaOynxHumbt8QbP5NMjNGo6oeCWfm1wDCb5awr2-eTV68n-XQQ0qGsmjnxVdxDt9PHVPferxb6aXUuzvRhQiBZ41b4L0G0v_dpI5idW4hWxMB-ENh_96MrpeHjqm2l8pixQhRZnofUJmEQItk6n1hiB_Bi7HqU-BpUPqy-PfpTat86982WAS3MK_1SUIsnjrMpEu19fsNxc_" />
+    <meta name="twitter:image:alt" content="UML diagram of bill-of-lading@0.0.2 namespace." />
+    <meta name="twitter:url" content="https://templates.legalschema.org/bill-of-lading@0.0.2.html" />
+
+
+        <title>UK Legal Schema Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/legal-schema.png" alt="UK Legal Schema" style="height: 35px;">
+          </a>
+        </div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/legalschema/templates" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                Bill of Lading
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IArs4c6QAAAIRlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAICgAwAEAAAAAQAAAIAAAAAAu7RpdAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDYuMC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KGV7hBwAADuRJREFUeAHtnXesVcUTxxfFrtgbFlDsXaOxQ0RjQyMRoyYqJsauqEQTY8EE/MM/jDEaFRJj9A9EiC0aFbFQBVvsWGLFXhFU7OX85jNxbvbdffB4cK7v/jKzybm7Z/vMfHd2dvYkt9cmm2xSSUgRfHKgl5Ad0vcpe6W694orrpj++eef1KsXWIjgjQMi916xBXiTekbvClk6kg45EABwKPSc5ABAzg2H6QCAQ6HnJAcAcm44TAcAHAo9JzkAkHPDYToA4FDoOckBgJwbDtMBAIdCz0kOAOTccJgOADgUek5yACDnhsN0AMCh0HOSAwA5NxymAwAOhZ6THADIueEwHQBwKPSc5ABAzg2H6QCAQ6HnJAcAcm44TAcAHAo9JzkAkHPDYToA4FDoOckBgJwbDtMBAIdCz0kOAOTccJgOADgUek5yACDnhsN0AMCh0HOSAwA5NxymAwAOhZ6THADIueEwHQBwKPSc5ABAzg2H6QCAQ6HnJAcAcm44TAcAHAo9JzkAkHPDYToA4FDoOckBgJwbDtMBAIdCz0kOAOTccJgOADgUek5yACDnhsN0AMCh0HOSe+cvrUhvttlmaeWVV072ryT8L8Gff/6ZPvvss8Zw5FG+wQYbpDXWWKNR1yqssEJHnPL+448/pu+++07/58D6tvoRd4MD/F+AVG/Js8oqqyy235VWWqlD2eqrr97hfWnmtOaaay62DXT169ev4i9x6KuVdNpcbYx11lmn2n777SsB8382ts2hu7HMuf4/jJA+U+/evXWlX3jhhWnDDTdMf/31l8wtJf6hZMGCBemmm25KAgKtw6r/+eef00knnZS22morzaMPVjbxqquumlj1vPOgUd588800adKktNZaa6WffvpJ+7Yf6vIvKBb69OmjGsPelzW2OXXW3sqaxzLaOmvTFnky8cWuIpngMpWJwCpR59p23rx5IrOO4YsvvtCy9ddfX+Ntt91W4xkzZmjFv//+u2ODTt4ef/xxbbPddttpbHMVgOk7q/D666+vLr30Un1fe+21G/WMZjRI37599TENZGX0t9FGG1WyhVUi1EqAVgmQG33k5fRNewGvlp999tnV1KlTqxNOOEHf11133Q7tbK7tEHfcXGVGdQSRl65U+hJhapesSFuVlre0Y3XWn/VBWR5EEPq68cYbp8suuyydddZZjXcSpklka0i//vprEjDqwwredNNNdd5oHNk+0jfffJM+//xz1R5omW+//VY1En1sscUWjfIffvgh/fLLL+mjjz7SsXbdddd0yCGHJAGnvgvQNG7Hn5YAAEJh6LKGZqHSl/XXHDePYW2JAQkGJ8HyAaGs+vTVV19p+TnnnKMgYQv68ssvE8D47bff0scff5yGDBmSLr744sYQxxxzjPYDyD799NN0+OGHa7loAK0jK17jP/74Q2Pb9gz4jY7aKNHyU4AJLKe5s7zulOd1l5TubByEz6o/8cQT06233ppkG9IuRo8erRpjwoQJ+j5lyhQVMMK78sorE0LF9sBGWbRoUbrnnnvSySefrHUpB1CU3XfffQ1N19n4S5pvT5S1TAP0BDFdjYnRifAR1O23365bwEEHHZT2228/bXrzzTdrfNddd6nwZR9Pp556apo5c2bafPPNk5xq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"/>   <span class="author"> UK Legal Schema </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">bill-of-lading@0.0.2</span>
+                <span class="tag is-light">Clause</span>
+                <span class="tag is-light">^0.21.0</span>
+                <span class="tag is-light">7619e7ccd432d36c91b5fbf28026097d07859d2e7fdb60bb39ef464215822403</span>
+            </div>
+            <p class="subtitle">
+                Bill of Lading for transport of goods via ocean vessel
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="bill-of-lading@0.0.2.html" class="dropdown-item is-active">
+                    bill-of-lading@0.0.2
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/bill-of-lading@0.0.2.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/bill-of-lading@0.0.2-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fbill-of-lading%400.0.2%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+        </p>
+
+        <div class="content">
+          <p>
+          <h1 id="billoflading">Bill of Lading</h1>
+<p>This clause defines a Bill of Lading for the transport of goods via an ocean vessel.</p>
+<p>References:</p>
+<ul>
+<li>https://www.icecargo.com.au/bill-of-lading/</li>
+<li>https://www.advancedontrade.com/2015/03/how-to-complete-consignee-and-notify-fields-of-a-bill-of-lading.html</li>
+</ul>
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<h1>"MAERSK LINE"</h1>
+<h2>Bill of Lading for Ocean Transport or Multimodal Transport</h2>
+<h3>Non-negotiable unless consigned TO ORDER</h3>
+<h2>ORIGINAL</h2>
+<p>SCAC: "MAEU"</p>
+<p>B/L Number: "MAEU-ABC12345678"</p>
+<p>Booking Number: "2021030264747"</p>
+<h3>Shipper</h3>
+<p>"CLAUSE TECHNOLOGIES"</p>
+<h3>Consignee</h3>
+<p>"TO ORDER"</p>
+<h3>Notify Party</h3>
+<p>"SAME AS CONSIGNEE"</p>
+<p>Exporter References: ""<br>Onward Instructions: ""</p>
+<p>Vessel: "Lagua"<br>Voyage number: "725"</p>
+<p>Port of Loading: "Shanghai, China"<br>Port of Discharge: "Brisbane, Australia"</p>
+<p>Place of Receipt: "Brisbane, Australia"<br>Place of Delivery: "Brisbane, Australia"</p>
+<h3>Freight</h3>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>Amount: 15 TONNE Package: CONTAINER Description: "Corn" NMFC: "" Freight Class: CLASS_400 Hazardous: NO</p>
+</li>
+<li><p>Amount: 35 TONNE Package: CONTAINER Description: "Wheat" NMFC: "" Freight Class: CLASS_400 Hazardous: NO</p>
+</li></ol><h3>Declared value: 2500.00 USD.</h3>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown"># "MAERSK LINE"
+
+## Bill of Lading for Ocean Transport or Multimodal Transport
+### Non-negotiable unless consigned TO ORDER
+## ORIGINAL
+
+SCAC: "MAEU"
+
+B/L Number: "MAEU-ABC12345678"
+
+Booking Number: "2021030264747"
+
+### Shipper
+
+"CLAUSE TECHNOLOGIES"
+
+### Consignee
+
+"TO ORDER"
+
+### Notify Party
+
+"SAME AS CONSIGNEE"
+
+Exporter References: ""  
+Onward Instructions: ""
+
+Vessel: "Lagua"  
+Voyage number: "725"
+
+Port of Loading: "Shanghai, China"  
+Port of Discharge: "Brisbane, Australia"
+
+Place of Receipt: "Brisbane, Australia"  
+Place of Delivery: "Brisbane, Australia"
+
+### Freight
+
+1. Amount: 15 TONNE Package: CONTAINER Description: "Corn" NMFC: "" Freight Class: CLASS_400 Hazardous: NO
+1. Amount: 35 TONNE Package: CONTAINER Description: "Wheat" NMFC: "" Freight Class: CLASS_400 Hazardous: NO
+
+### Declared value: 2500.00 USD.
+</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem"># {{accountName}}
+
+## Bill of Lading for Ocean Transport or Multimodal Transport
+### Non-negotiable unless consigned TO ORDER
+## ORIGINAL
+
+SCAC: {{scac}}
+
+B/L Number: {{bolNumber}}
+
+Booking Number: {{bookingNumber}}
+
+### Shipper
+
+{{shipper}}
+
+### Consignee
+
+{{consignee}}
+
+### Notify Party
+
+{{notifyParty}}
+
+Exporter References: {{exportReferences}}  
+Onward Instructions: {{onwardInstructions}}
+
+Vessel: {{vessel}}  
+Voyage number: {{voyageNumber}}
+
+Port of Loading: {{portOfLoading}}  
+Port of Discharge: {{portOfDischarge}}
+
+Place of Receipt: {{placeOfReceipt}}  
+Place of Delivery: {{placeOfDelivery}}
+
+### Freight
+
+{{#olist commodities}}
+Amount: {{quantity}} {{unitOfMass}} Package: {{packageType}} Description: {{description}} NMFC: {{nmfcCode}} Freight Class: {{freightClass}} Hazardous: {{hazmat}}
+{{/olist}}
+
+### Declared value: {{declaredValue}}.
+</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.legalschema.billoflading.BillOfLadingClause",
+    "accountName": "MAERSK LINE",
+    "scac": "MAEU",
+    "bolNumber": "MAEU-ABC12345678",
+    "bookingNumber": "2021030264747",
+    "exportReferences": "",
+    "onwardInstructions": "",
+    "shipper": "resource:org.accordproject.organization.Organization#CLAUSE%20TECHNOLOGIES",
+    "consignee": "resource:org.accordproject.organization.Organization#TO%20ORDER",
+    "notifyParty": "resource:org.accordproject.organization.Organization#SAME%20AS%20CONSIGNEE",
+    "vessel": "Lagua",
+    "voyageNumber": "725",
+    "portOfLoading": "Shanghai, China",
+    "portOfDischarge": "Brisbane, Australia",
+    "placeOfReceipt": "Brisbane, Australia",
+    "placeOfDelivery": "Brisbane, Australia",
+    "commodities": [
+        {
+            "$class": "org.legalschema.billoflading.Commodity",
+            "quantity": 15,
+            "unitOfMass": "TONNE",
+            "packageType": "CONTAINER",
+            "description": "Corn",
+            "nmfcCode": "",
+            "freightClass": "CLASS_400",
+            "hazmat": "NO"
+        },
+        {
+            "$class": "org.legalschema.billoflading.Commodity",
+            "quantity": 35,
+            "unitOfMass": "TONNE",
+            "packageType": "CONTAINER",
+            "description": "Wheat",
+            "nmfcCode": "",
+            "freightClass": "CLASS_400",
+            "hazmat": "NO"
+        }
+    ],
+    "declaredValue": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 2500,
+        "currencyCode": "USD"
+    },
+    "clauseId": "9edceabc-2ef0-44df-b4f6-657ea417239c"
+}</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/bLLXRvim4FsUNy77JLkZfbkRJQgg4i9Q58eHa7RHD4MkEGWhsCoORkcs_pwJs3IkCYdxbFVktJtikmjSDW9pqLRbW9IuQIp6ys49EIuRie8A3--BicHPYTE2viCGamUSGxAkmJe_jrwvRtCEwzVMnONrQs1PrXjhObzfuBiQHP7hQnpFt4JZ976ZnT91KOHYxzPTtlMI5oY0FYim3vph7awrjsFBL5tbs846qGGjUXnvRjIJ1FL9SMyIpnH2GM9BGvqUsOdEMVXUCDN2D9hVR96FaBP1oRNMGzkPsLUk9fwlaU_hmuQUwxYnng6xbFwg89BL2hcwSH7o5OfdtbIX424LJEn0bIJpYRAP1vvwrgqTBCFUz2womz2T3luSCl5F78fy9PnDvlwHExuTnylJOuETxh8pGpipjB6XZSU6-C5W7qyCEZesIaSZaxv8DiytCfzpObgTcCdlJFMzIKybFQYLr_W9yvIr_-hZGgz3W0upT5XLiRGGQ-tWKG4vSEjxYwcGSRK7j10ek-disXwgnTlvFzVFMAsNuF8fLWeDuKKj2aQDEAqouh1K9HjxaksGhVnyznL-gh0ux88JIL3cRuWqQvljMyVkMWTqjtVgJ9WGrb8HuCgyGqCmCGBth0pQwXxuYoXxaBzx5FXPCouYo8039T0O8gC_vEKysWZUagvFIaOynxHumbt8QbP5NMjNGo6oeCWfm1wDCb5awr2-eTV68n-XQQ0qGsmjnxVdxDt9PHVPferxb6aXUuzvRhQiBZ41b4L0G0v_dpI5idW4hWxMB-ENh_96MrpeHjqm2l8pixQhRZnofUJmEQItk6n1hiB_Bi7HqU-BpUPqy-PfpTat86982WAS3MK_1SUIsnjrMpEu19fsNxc_"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.legalschema.billoflading
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.time.Duration from https://models.accordproject.org/v2.0/time.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
+import org.accordproject.value.UnitOfMass from https://models.accordproject.org/value.cto
+
+enum PackageType {
+  o BAG
+  o BALE
+  o BARREL
+  o BASKET
+  o BATTERY_CORROSIVE_WET
+  o BIN
+  o BOX
+  o BUNCH
+  o BUNDLE
+  o CABINET
+  o CAN
+  o CARBOY
+  o CARRIER
+  o CARTON
+  o CASE
+  o CASK
+  o CONTAINER
+  o CRATE
+  o CYLINDER
+  o DRUM
+  o LOOSE
+  o OTHER
+  o PACKAGE
+  o PAIL
+  o PALLET
+  o PIECES
+  o PIPE_LINE
+  o RACK
+  o REEL
+  o ROLL
+  o SKID
+  o SPOOL
+  o TANK
+  o TUBE
+  o UNIT
+  o VAN_PACK
+  o WRAPPED
+}
+
+enum FreightClass {
+  o CLASS_50
+  o CLASS_55
+  o CLASS_60
+  o CLASS_65
+  o CLASS_70
+  o CLASS_775
+  o CLASS_85
+  o CLASS_925
+  o CLASS_100
+  o CLASS_110
+  o CLASS_125
+  o CLASS_150
+  o CLASS_175
+  o CLASS_200
+  o CLASS_250
+  o CLASS_300
+  o CLASS_400
+  o CLASS_500
+}
+
+enum Hazardous {
+  o YES
+  o NO
+}
+
+concept Commodity {
+  o Integer quantity
+  o UnitOfMass unitOfMass
+  o PackageType packageType
+  o String description
+  o String  nmfcCode optional // National Motor Freight Classification (NMFC) number associated with the commodity classification.
+  o FreightClass freightClass optional
+  o Hazardous hazmat optional
+}
+
+/**
+ * An (To Order) Bill of Lading is a legal document that gives the
+ * holder of the bill of lading legal title to the goods described
+ * Refs: https://www.icecargo.com.au/bill-of-lading/
+ * https://www.advancedontrade.com/2015/03/how-to-complete-consignee-and-notify-fields-of-a-bill-of-lading.html
+ */
+asset BillOfLadingClause extends AccordClause {
+
+  o String accountName
+
+  o String scac // The Standard Carrier Alpha Code (SCAC) assigned to identify the carrier.
+  o String bolNumber
+  o String bookingNumber
+  o String exportReferences optional
+  o String onwardInstructions optional
+
+  --> Organization shipper
+  --> Organization consignee optional // identifier should be "TO ORDER" or "TO BEARER" if this is a negotiable BoL
+  --> Organization notifyParty optional
+
+  o String vessel
+  o String voyageNumber
+
+  o String portOfLoading
+  o String portOfDischarge
+
+  o String placeOfReceipt optional
+  o String placeOfDelivery optional
+
+  o Commodity[] commodities
+  o MonetaryAmount declaredValue
+}</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.Duration</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/value.html">org.accordproject.value.UnitOfMass</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/legalschema/templates/tree/master/src/bill-of-lading/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the UK Legal Schema documentation for how to use a template or integrate it within your application.</a>
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/legalschema/templates/tree/master/src/bill-of-lading">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2021 <a href="https://legalschema.org">UK Legal Schema</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. UK Legal Schema is not a law firm or a substitute for an attorney or law firm. UK Legal Schema cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

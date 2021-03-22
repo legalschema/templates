@@ -49,8 +49,8 @@
     "showdown": "^1.9.1",
     "uuid": "^3.3.2"
   },
-  "name": "@accordproject/cicero-template-library",
-  "description": "This repository host all Accord Project Cicero templates.",
+  "name": "@legalschema/templates",
+  "description": "This repository host all UK Legal Schema Cicero templates.",
   "version": "0.1.0",
   "main": "build.js",
   "devDependencies": {
@@ -60,7 +60,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/accordproject/cicero-template-library.git"
+    "url": "git+https://github.com/legalschema/templates.git"
   },
   "keywords": [
     "accord",
@@ -71,7 +71,7 @@
   "author": "Accord Project",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/accordproject/cicero-template-library/issues"
+    "url": "https://github.com/legalschema/templates/issues"
   },
-  "homepage": "https://github.com/accordproject/cicero-template-library#readme"
+  "homepage": "https://github.com/legalschema/templates#readme"
 }

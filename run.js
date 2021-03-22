@@ -51,7 +51,7 @@ const jquery = require("jquery");
 const rootDir = resolve(__dirname, './src');
 const buildDir = resolve(__dirname, './build/');
 const archiveDir = resolve(__dirname, './build/archives');
-const serverRoot = process.env.SERVER_ROOT ?  process.env.SERVER_ROOT : 'https://templates.accordproject.org';
+const serverRoot = process.env.SERVER_ROOT ?  process.env.SERVER_ROOT : 'https://templates.legalschema.org';
 const studioRoot = 'https://studio.accordproject.org';
 
 const ciceroMark = new CiceroMarkTransformer();
