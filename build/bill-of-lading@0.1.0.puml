@@ -1,0 +1,22 @@
+@startuml
+class org.legalschema.billoflading.BillOfLadingClause << (A,green) >> {
+   + String accountName
+   + String scac
+   + String bolNumber
+   + String bookingNumber
+   + String exportReferences
+   + String onwardInstructions
+   + Organization shipper
+   + Organization consignee
+   + Organization notifyParty
+   + String vessel
+   + String voyageNumber
+   + String portOfLoading
+   + String portOfDischarge
+   + String placeOfReceipt
+   + String placeOfDelivery
+   + Commodity[] commodities
+   + MonetaryAmount declaredValue
+}
+org.legalschema.billoflading.BillOfLadingClause --|> org.accordproject.cicero.contract.AccordClause
+@enduml
